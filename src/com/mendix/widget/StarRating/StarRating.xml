@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="com.mendix.widget.StarRating.StarRating" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../../../../../xsd/widget.xsd">
+    <name>StarRating</name>
+    <description>This widget lets users rate an object from 1 to 5..</description>
+    <icon>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANkE3LLa
+        AgAAAkxJREFUeJyVkttLUwEcxz/n7OLm5tzcxHlhXjLDsUg0xYweeurF8M1kkaiJ
+        L0Jv9T9UFERGEA578EENzMqXCkGwgU8qgRuIYtOpXZyXM912djmnl4wSJ/h9/H0v
+        /H5ffnAKWusM3rY6g/c0zWkQpl52zU298M4BwpndNXZto7wxrcgro0qNncZsOjEb
+        0dN+rVdfckHQF5cJPa3VvWddwB7yv4qo8oqq7nxSQ+PtEcB+klB746K5rbyiqiRH
+        r7PY7TZrnslkrakodLs8lwuQ1uAwjKvSUfDhfv740mo8ED1U9yJRYU9OCVJoN70p
+        3LrieOjzPX1gqr0DxIA4ZCTYXYPYOkSXYX8BYosgSSCJIJg43Etx9/XWI81iODb1
+        dnxyvcF1eLXMfT6X6C/YD0F8E6QAbM9AZBb2IhAVQGtldikdaR0I35tezjzWAGwf
+        KPOjb/x+ZzpQf8njdAryNkT88PMzRAOQSEDKiKIrZehLasE78K1zU1LfAWiOykjC
+        +vuZ1cnavO/XPVXbxYQ/QuIHyBmQDWByMTqfN9/5fPFmUmHxb4nHSt0oygmLbHyF
+        WALSGkgZIGmETIqiXEUENv41/PcHZTY8Dc4DNzsZSFnA2gC2esiY4CBBQ1HSXWbD
+        kzWgqVLXYtEadIiFbMkupetJaKjz2crQllioYDZg0cd1TZW5LVm/Z9CbP6YOn1NH
+        +kuC5Q6x42he7hA7RvpLg+pwtTp42zqWzW+Z6LMEu5uNPsB1Au/qbjb6Jvryg4Dl
+        pABznpaW42cdg/hHYz4a/Ablkdwn65WLsgAAAABJRU5ErkJggg==
+    </icon>
+    <properties>
+        <property key="rateType" type="enumeration" defaultValue="single">
+            <caption>Rate type</caption>
+            <category>Display</category>
+            <description>Render as single or a average rate</description>
+            <enumerationValues>
+                <enumerationValue key="single">Single</enumerationValue>
+                <enumerationValue key="average">Average</enumerationValue>
+            </enumerationValues>
+        </property>
+        <property key="rateEntity" type="entity">
+            <caption>Rating entity</caption>
+            <category>Data source</category>
+            <description>The entity where rates are stored</description>
+        </property>
+        <property key="rateAttribute" type="attribute" entityProperty="rateEntity">
+            <caption>Rating attribute</caption>
+            <category>Data source</category>
+            <description>The attribute containing rate values</description>
+            <attributeTypes>
+                <attributeType name="Decimal"/>
+                <attributeType name="Integer"/>
+            </attributeTypes>
+        </property>
+        <property key="campaignEntity" type="entity" pathType="reference" isPath="yes" entityProperty="rateEntity">
+            <caption>Campaign entity</caption>
+            <category>Data source</category>
+            <description>The entity containing items which are to be rated</description>
+        </property>
+        <property key="averageAttribute" type="attribute" entityProperty="campaignEntity">
+            <caption>Average attribute</caption>
+            <category>Data source</category>
+            <description>Attribute where the average rate is saved</description>
+            <attributeTypes>
+                <attributeType name="Decimal"/>
+            </attributeTypes>
+        </property>
+        <property key="onChangeMicroflow" type="microflow" required="false">
+            <caption>On change microflow</caption>
+            <category>Behaviour</category>
+            <description>Microflow to be executed when the rate is changed</description>
+            <returnType type="Void" />
+        </property>
+    </properties>
+</widget>
