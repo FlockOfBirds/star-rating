@@ -14,6 +14,7 @@ interface StarRatingContainerProps {
     readOnly: boolean;
 }
 
+
 class StarRatingContainer extends Component<StarRatingContainerProps, { alertMessage?: string, initialRate: number }> {
     private subscriptionHandles: number[];
     private ownerReference = "";
@@ -25,6 +26,7 @@ class StarRatingContainer extends Component<StarRatingContainerProps, { alertMes
         this.ownerReference = "System.owner";
         this.state = { alertMessage: this.validateProps(), initialRate: 0 };
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.subscribe(this.props.contextObject);
     }
 
     render() {
@@ -34,7 +36,6 @@ class StarRatingContainer extends Component<StarRatingContainerProps, { alertMes
             return createElement(StarRating, {
                 handleOnChange: this.handleOnChange,
                 initialRate: this.state.initialRate,
-                onChangeMicroflow: this.props.onChangeMicroflow,
                 ownerGuid: this.props.contextObject
                     ? this.props.contextObject.get(this.ownerReference) as string
                     : undefined,
@@ -47,6 +48,12 @@ class StarRatingContainer extends Component<StarRatingContainerProps, { alertMes
     componentWillReceiveProps(nextProps: StarRatingContainerProps) {
         this.subscribe(nextProps.contextObject);
         this.fetchData(nextProps.contextObject);
+    }
+
+     componentDidMount() {
+        if (!this.state.alertMessage) {
+            this.fetchData(this.props.contextObject);
+        }
     }
 
     componentWillUnmount() {
