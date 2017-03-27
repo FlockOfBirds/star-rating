@@ -1,0 +1,12 @@
+.widget-star-rating-font {
+    font-size: 30px;
+}
+.widget-star-rating-empty {
+    color:#ccc;
+}
+.widget-star-rating-full {
+    color: #ffa611;
+}
+.widget-star-rating-placeholder {
+    color: #e02016;
+}
